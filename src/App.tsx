@@ -21,7 +21,8 @@ import {
   Twitter,
   Youtube,
   Music,
-  Linkedin
+  Linkedin,
+  Briefcase
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -85,6 +86,36 @@ const GALLERY = [
   { url: "https://f.top4top.io/p_3715a6tv91.png", title: "مشروع باكينج دلع كرشك" },
 ];
 
+const CLIENTS = [
+  { name: "شركة غاز مصر", logo: "https://g.top4top.io/p_3720qartd1.png" },
+  { name: "الشركة القابضة لكهرباء مصر", logo: "https://i.top4top.io/p_37206q87u1.png" },
+  { name: "شيبسي للصناعات الغذائية", logo: "https://j.top4top.io/p_37203ohpm1.png" },
+  { name: "بيبسي كولا مصر", logo: "https://k.top4top.io/p_37202jnqe1.png" },
+  { name: "كوك دور", logo: "https://l.top4top.io/p_3720ey5hf1.png" },
+  { name: "شركة حلو الشام", logo: "https://a.top4top.io/p_3720auffk1.png" },
+  { name: "شركة المالكي", logo: "https://d.top4top.io/p_3720qrgyq1.png" },
+  { name: "شركة بلبن", logo: "https://e.top4top.io/p_3720slgng1.png" },
+  { name: "شركة حليبو", logo: "https://i.top4top.io/p_3720j34ur1.png" },
+  { name: "اسكوادرا للحلويات", logo: "https://j.top4top.io/p_3720pf8f91.png" },
+  { name: "شركة بريق", logo: "https://k.top4top.io/p_3720sw8qp1.png" },
+  { name: "شركة راية أوتو", logo: "https://b.top4top.io/p_3720dyyiy1.png" },
+  { name: "شركة أبو رجيلة", logo: "https://c.top4top.io/p_3720sttw81.png" },
+  { name: "شركة العبور للبويات", logo: "https://e.top4top.io/p_3720hlah31.png" },
+  { name: "شركة كلوركس", logo: "https://g.top4top.io/p_3720poxji1.png" },
+  { name: "شركة رودس", logo: "https://j.top4top.io/p_3720m3nfx1.png" },
+  { name: "مؤسسة مجدي يعقوب للقلب", logo: "https://k.top4top.io/p_3720ucmzn1.png" },
+  { name: "مستشفى الجوي التخصصي", logo: "https://l.top4top.io/p_37201mia41.png" },
+  { name: "مستشفى الناس", logo: "https://b.top4top.io/p_37204hd731.png" },
+  { name: "جمعية دار الأورمان", logo: "https://c.top4top.io/p_3720ewd8d1.png" },
+  { name: "معمل سيد ميديكال", logo: "https://e.top4top.io/p_3720wbczu1.png" },
+  { name: "مستشفى أحمد شفيق", logo: "https://g.top4top.io/p_3720h4mks1.png" },
+  { name: "مستشفى المعلمين", logo: "https://h.top4top.io/p_3720n0mhi1.png" },
+  { name: "سمارت هاوس", logo: "https://j.top4top.io/p_3720supv51.png" },
+  { name: "شركة راية", logo: "https://k.top4top.io/p_3720b4zp91.png" },
+  { name: "الأفريقية للأمن والحراسة", logo: "https://a.top4top.io/p_3720pq7m31.png" },
+  { name: "شركة أوراسكوم", logo: "https://c.top4top.io/p_3720n6yd01.png" },
+];
+
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -93,6 +124,7 @@ export default function App() {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showCookieConsent, setShowCookieConsent] = useState(false);
+  const [showClientsModal, setShowClientsModal] = useState(false);
 
   useEffect(() => {
     const consent = localStorage.getItem('cookie-consent');
@@ -675,6 +707,17 @@ export default function App() {
 
       {/* Floating Buttons Container */}
       <div className="fixed bottom-8 left-8 z-50 flex flex-row gap-4">
+        {/* Past Works Button */}
+        <button 
+          onClick={() => setShowClientsModal(true)}
+          className="w-16 h-16 bg-cyan-600 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform active:scale-95 group relative"
+        >
+          <Briefcase className="w-8 h-8" />
+          <span className="absolute bottom-full mb-4 left-0 bg-white text-slate-900 px-4 py-2 rounded-xl shadow-lg text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+            سابقة أعمالنا
+          </span>
+        </button>
+
         {/* WhatsApp Button */}
         <a 
           href="https://wa.me/201070210070" 
@@ -787,6 +830,75 @@ export default function App() {
                 </div>
               </div>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* --- Clients Modal --- */}
+      <AnimatePresence>
+        {showClientsModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-6 bg-slate-900/60 backdrop-blur-sm"
+            onClick={() => setShowClientsModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              className="bg-white w-full max-w-5xl max-h-[90vh] rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="p-6 md:p-8 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-black text-slate-900">سابقة أعمالنا</h3>
+                  <p className="text-slate-500 text-sm mt-1">نفخر بثقة كبرى الشركات والمؤسسات في خدماتنا</p>
+                </div>
+                <button 
+                  onClick={() => setShowClientsModal(false)}
+                  className="p-2 hover:bg-slate-200 rounded-full transition-colors"
+                >
+                  <X className="w-6 h-6 text-slate-500" />
+                </button>
+              </div>
+              
+              <div className="flex-1 overflow-y-auto p-6 md:p-10">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-8">
+                  {CLIENTS.map((client, idx) => (
+                    <motion.div 
+                      key={idx}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: idx * 0.03 }}
+                      className="flex flex-col items-center text-center group"
+                    >
+                      <div className="w-full aspect-square bg-slate-50 rounded-2xl p-4 flex items-center justify-center mb-3 border border-slate-100 group-hover:border-cyan-200 group-hover:bg-white group-hover:shadow-md transition-all duration-300">
+                        <img 
+                          src={client.logo} 
+                          alt={client.name} 
+                          className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
+                          referrerPolicy="no-referrer"
+                        />
+                      </div>
+                      <span className="text-xs md:text-sm font-bold text-slate-700 group-hover:text-cyan-600 transition-colors leading-tight">
+                        {client.name}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="p-6 bg-slate-50 border-t border-slate-100 text-center">
+                <button 
+                  onClick={() => setShowClientsModal(false)}
+                  className="px-8 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-cyan-600 transition-all"
+                >
+                  إغلاق
+                </button>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
