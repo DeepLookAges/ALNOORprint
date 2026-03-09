@@ -20,7 +20,8 @@ import {
   Facebook,
   Twitter,
   Youtube,
-  Music
+  Music,
+  Linkedin
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -608,6 +609,7 @@ export default function App() {
                   { Icon: Twitter, url: "https://x.com/Alnoor_Prints" },
                   { Icon: Youtube, url: "https://www.youtube.com/@Alnoor_Print" },
                   { Icon: Music, url: "https://www.tiktok.com/@alnoor_prints" },
+                  { Icon: Linkedin, url: "https://www.linkedin.com/in/alnoor-print/" },
                 ].map((item, idx) => (
                   <a 
                     key={idx} 
