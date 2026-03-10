@@ -22,7 +22,8 @@ import {
   Youtube,
   Music,
   Linkedin,
-  Briefcase
+  Briefcase,
+  FileText
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -58,15 +59,15 @@ const SERVICES: Service[] = [
   },
   {
     id: 3,
-    title: "اللوحات الإعلانية (Banners & Signage)",
-    description: "طباعة البنرات واللوحات الإعلانية الخارجية والداخلية بجودة ألوان استثنائية.",
-    icon: <Layout className="w-8 h-8" />,
+    title: "طباعة النشرات الدوائية",
+    description: "طباعة النشرات الداخلية للأدوية بدقة عالية وورق مخصص للصناعات الدوائية.",
+    icon: <FileText className="w-8 h-8" />,
   },
   {
     id: 4,
-    title: "الكلادينج والحروف البارزة (3D Letters)",
-    description: "تركيب واجهات الكلادينج وتصنيع الحروف البارزة 3D لواجهات المحلات والشركات.",
-    icon: <Layers className="w-8 h-8" />,
+    title: "تغليف المنتجات الغذائية والطبية",
+    description: "حلول تغليف مبتكرة للمطاعم وشركات الأدوية تضمن أعلى معايير الجودة والسلامة.",
+    icon: <Package className="w-8 h-8" />,
   },
 ];
 
@@ -415,7 +416,7 @@ export default function App() {
               تعد مطبعة النور واحدة من المؤسسات الرائدة في مجال الطباعة والتغليف. نحن نفخر بامتلاكنا أحدث ماكينات طباعة الأوفست رباعية الألوان (4 Color Sheet Printing Machine) التي تضمن دقة متناهية في إعادة إنتاج الألوان.
             </p>
             <div className="space-y-4">
-              {['متخصصون في علب الكرتون والبريستول', 'خبراء في اللوحات الإعلانية والكلادينج', 'حروف بارزة 3D بأعلى جودة', 'حلول تغليف مبتكرة للمنتجات الغذائية والطبية'].map((item, idx) => (
+              {['متخصصون في علب الكرتون والبريستول', 'خبراء في الأدوية والنشرات الدوائية', 'نحن شريك نجاح لشركات الأدوية والمطاعم الكبرى', 'حلول تغليف مبتكرة للمنتجات الغذائية والطبية'].map((item, idx) => (
                 <div key={idx} className="flex items-center gap-3">
                   <CheckCircle2 className="text-cyan-600 w-6 h-6 flex-shrink-0" />
                   <span className="font-semibold text-slate-800">{item}</span>
